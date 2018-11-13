@@ -2,6 +2,7 @@
 
 1. `git clone` this repo
 1. `cd oss-contribs`
+1. `pipenv install`
 1. `pipenv run python gh-repo-oss-contrib-xls.py`
 
 # Requirements
