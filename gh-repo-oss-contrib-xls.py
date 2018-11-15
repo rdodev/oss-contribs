@@ -3,8 +3,8 @@ import xlsxwriter
 
 u = input('Please enter your github username: ')
 
-token = ''
-
+#you can obtain a personal api token for your github account. Make sure it's read access only where applicable.
+token=''
 gh = login(token=token)
 
 print('Retrieving all repositories by: ' + u + '\n')

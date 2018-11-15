@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 "github3-py" = "*"
-jupyterlab = "*"
 xlsxwriter = "*"
 flask = "*"
 
