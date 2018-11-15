@@ -1,0 +1,62 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: oss-app
+---  
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: oss-app
+  name: oss-app-depl
+  namespace: oss-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: oss-app
+  template:
+    metadata:
+      name: oss-app-pod
+      labels:
+        app: oss-app
+    spec:
+      containers:
+      - name: oss-app
+        image: quay.io/rdodev/oss:app
+        resources:
+          requests:
+            memory: 128Mi
+        env:
+        - name: FLASK_APP
+          value: app.py
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: oss-app
+  name: oss-app-svc
+  namespace: oss-app
+spec:
+  ports:
+  - port: 80
+    targetPort: 5000
+  selector:
+    app: oss-app
+  sessionAffinity: None
+  type: LoadBalancer
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: oss-app-ing
+  labels:
+    app: oss-app
+  namespace: oss-app
+spec:
+  backend:
+    serviceName: oss-app-svc
+    servicePort: 80

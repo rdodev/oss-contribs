@@ -1,9 +1,11 @@
-from github3 import GitHub
+from github3 import GitHub, login
 import xlsxwriter
 
 u = input('Please enter your github username: ')
 
-gh = GitHub()
+token = ''
+
+gh = login(token=token)
 
 print('Retrieving all repositories by: ' + u + '\n')
 reps = gh.repositories_by(username=u)

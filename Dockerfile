@@ -11,4 +11,4 @@ WORKDIR /oss
 
 RUN pipenv install
 
-ENTRYPOINT ["pipenv", "run", "python", "gh-repo-oss-contrib-xls.py"]
+ENTRYPOINT ["pipenv", "run", "flask", "run", "--host=0.0.0.0"]
