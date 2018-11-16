@@ -7,6 +7,7 @@
 
 ## For that gritty close-to-the-metal feel
 
+1. open `gh-repo-oss-contrib-xls.py` and fill in the `token` variable with your GH personal token.
 1. `pipenv install`
 1. `pipenv run python gh-repo-oss-contrib-xls.py`
 
