@@ -11,6 +11,7 @@ def spreadhseet(username):
     token = ''
     gh = login(token=token)
     reps = gh.repositories_by(username=username)
+    reps = filter(lambda x: x.archived is False, reps)
     output = io.BytesIO()
     file_name = 'Own-Time-Contributions.xlsx'
     wkbook = xlsxwriter.Workbook(output, {'in_memory': True})

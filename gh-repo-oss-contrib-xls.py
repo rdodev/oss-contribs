@@ -10,6 +10,7 @@ gh = login(token=token)
 
 print('Retrieving all repositories by: ' + u + '\n')
 reps = gh.repositories_by(username=u)
+reps = filter(lambda x: x.archived is False, reps)
 
 print('Preparing the spreadsheet...')
 
